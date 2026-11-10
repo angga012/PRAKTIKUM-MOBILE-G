@@ -20,22 +20,19 @@ export default function AlatCard({
   return (
     <View style={styles.card}>
 
-      {/* Foto alat */}
       <Image
         source={{ uri: alat.gambar }}
         style={styles.gambar}
         resizeMode="cover"
       />
 
-      {/* Nama */}
       <Text
-        style={{color :'red'}}
+        style={styles.nama}
         numberOfLines={1}
       >
         {alat.nama}
       </Text>
 
-      {/* Kategori */}
       <Text
         style={styles.kategori}
         numberOfLines={1}
@@ -43,7 +40,6 @@ export default function AlatCard({
         {alat.kategori}
       </Text>
 
-      {/* Harga */}
       <View style={styles.priceContainer}>
         <Text style={styles.priceLabel}>
           Mulai dari
@@ -58,7 +54,6 @@ export default function AlatCard({
         </Text>
       </View>
 
-      {/* Stok */}
       <View style={styles.stockBox}>
         <View style={styles.stockDot} />
 
@@ -67,8 +62,8 @@ export default function AlatCard({
         </Text>
       </View>
 
-      {/* Tombol */}
       <Pressable
+        accessibilityRole="button"
         style={styles.button}
         onPress={onPress}
       >
@@ -82,53 +77,54 @@ export default function AlatCard({
 }
 
 const styles = StyleSheet.create({
-
   card: {
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: 10,
-    marginBottom: 14,
-    elevation: 3,
+    borderRadius: 18,
+    padding: 11,
+    marginBottom: 16,
+    borderWidth: 1,
+    borderColor: '#E2E8F0',
+    elevation: 2,
   },
 
   gambar: {
     width: '100%',
-    height: 115,
-    borderRadius: 12,
-    marginBottom: 10,
+    height: 128,
+    borderRadius: 13,
+    marginBottom: 12,
     backgroundColor: '#E2E8F0',
   },
 
   nama: {
-    fontSize: 15,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontWeight: '700',
     color: '#172033',
   },
 
   kategori: {
-    fontSize: 10,
+    fontSize: 11,
     color: '#64748B',
-    marginTop: 3,
+    marginTop: 4,
   },
 
   priceContainer: {
-    marginTop: 9,
+    marginTop: 11,
   },
 
   priceLabel: {
-    fontSize: 9,
+    fontSize: 10,
     color: '#94A3B8',
   },
 
   harga: {
-    fontSize: 13,
-    fontWeight: 'bold',
+    fontSize: 14,
+    fontWeight: '700',
     color: '#2563EB',
     marginTop: 1,
   },
 
   perHari: {
-    fontSize: 9,
+    fontSize: 10,
     color: '#64748B',
     marginTop: 1,
   },
@@ -137,40 +133,39 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#F0FDF4',
-    borderRadius: 7,
-    paddingVertical: 5,
-    paddingHorizontal: 7,
+    borderRadius: 8,
+    paddingVertical: 6,
+    paddingHorizontal: 8,
     alignSelf: 'flex-start',
-    marginTop: 8,
+    marginTop: 10,
   },
 
   stockDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
+    width: 7,
+    height: 7,
+    borderRadius: 4,
     backgroundColor: '#22C55E',
-    marginRight: 5,
+    marginRight: 6,
   },
 
   stockText: {
-    fontSize: 9,
+    fontSize: 10,
     color: '#15803D',
     fontWeight: '600',
   },
 
   button: {
-    height: 34,
+    height: 38,
     backgroundColor: '#2563EB',
-    borderRadius: 9,
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 9,
+    marginTop: 11,
   },
 
   buttonText: {
     color: '#FFFFFF',
-    fontSize: 11,
-    fontWeight: 'bold',
+    fontSize: 12,
+    fontWeight: '700',
   },
-
 });

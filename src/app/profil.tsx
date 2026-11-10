@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    maxWidth: isWeb ? 1500 : 390,
+    maxWidth: isWeb ? 1600 : 900,
     backgroundColor: '#FFFFFF',
     overflow: 'hidden',
   },
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
 
   content: {
     width: '100%',
-    maxWidth: 900,
+    maxWidth: 1200,
     alignSelf: 'center',
     paddingHorizontal: isWeb ? 40 : 16,
     paddingTop: isWeb ? 35 : 22,
@@ -302,15 +302,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    maxWidth: isWeb ? 1500 : 390,
-    height: 72,
+    maxWidth: isWeb ? 900 : 900,
+    height: 76,
     backgroundColor: '#FFFFFF',
     borderTopWidth: 1,
     borderTopColor: '#CBD5E1',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: isWeb ? 500 : 100,
+    gap: isWeb ? 160 : 72,
+    alignSelf: 'center',
   },
 
   navItem: {

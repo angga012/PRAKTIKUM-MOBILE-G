@@ -5,92 +5,96 @@ const isWeb = Platform.OS === "web";
 export const styles = StyleSheet.create({
   outerContainer: {
     flex: 1,
-    backgroundColor: isWeb ? "#eef3f7" : "#ede2e2",
+    backgroundColor: isWeb ? "#F1F5F9" : "#F8FAFC",
     alignItems: "center",
   },
 
   container: {
     flex: 1,
     width: "100%",
-    maxWidth: isWeb ? undefined : 390,
-    backgroundColor: "#efe9e9",
+    maxWidth: isWeb ? 1600 : 900,
+    backgroundColor: "#F8FAFC",
     alignSelf: "center",
     overflow: "hidden",
   },
 
   content: {
     width: "100%",
-    maxWidth: isWeb ? 1500 : 390,
+    maxWidth: isWeb ? 1450 : 900,
     alignSelf: "center",
-    paddingTop: isWeb ? 35 : 24,
-    paddingHorizontal: isWeb ? 40 : 16,
-    paddingBottom: 105,
+    paddingTop: isWeb ? 36 : 24,
+    paddingHorizontal: isWeb ? 32 : 16,
+    paddingBottom: 112,
   },
 
   topHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 22,
+    marginBottom: 24,
+    gap: 16,
   },
 
   greeting: {
     fontSize: 14,
     color: "#64748B",
-    marginBottom: 5,
+    marginBottom: 6,
   },
 
   welcome: {
-    fontSize: isWeb ? 25 : 19,
-    fontWeight: "bold",
+    fontSize: isWeb ? 26 : 20,
+    fontWeight: "700",
     color: "#172033",
-    maxWidth: 500,
-    lineHeight: isWeb ? 32 : 25,
+    maxWidth: 520,
+    lineHeight: isWeb ? 34 : 27,
   },
 
   headerIcon: {
-    width: 48,
-    height: 48,
-    borderRadius: 14,
+    width: 50,
+    height: 50,
+    borderRadius: 16,
     backgroundColor: "#EFF6FF",
     justifyContent: "center",
     alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#DBEAFE",
   },
 
   banner: {
-    backgroundColor: "#2563EB",
-    borderRadius: 20,
-    padding: isWeb ? 28 : 18,
-    minHeight: isWeb ? 170 : 135,
+    backgroundColor: "#1D4ED8",
+    borderRadius: 22,
+    padding: isWeb ? 30 : 20,
+    minHeight: isWeb ? 176 : 140,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 20,
+    marginBottom: 22,
+    overflow: "hidden",
   },
 
   bannerText: {
     flex: 1,
-    paddingRight: 20,
+    paddingRight: isWeb ? 24 : 14,
   },
 
   bannerTitle: {
-    fontSize: isWeb ? 28 : 20,
-    fontWeight: "bold",
+    fontSize: isWeb ? 28 : 21,
+    fontWeight: "700",
     color: "#FFFFFF",
     marginBottom: 8,
   },
 
   bannerSubtitle: {
     fontSize: isWeb ? 15 : 12,
-    lineHeight: isWeb ? 23 : 18,
+    lineHeight: isWeb ? 23 : 19,
     color: "#DBEAFE",
     maxWidth: 500,
   },
 
   bannerIcon: {
-    width: isWeb ? 80 : 65,
-    height: isWeb ? 80 : 65,
-    borderRadius: 20,
+    width: isWeb ? 82 : 62,
+    height: isWeb ? 82 : 62,
+    borderRadius: 22,
     backgroundColor: "#3B82F6",
     justifyContent: "center",
     alignItems: "center",
@@ -98,41 +102,42 @@ export const styles = StyleSheet.create({
 
   summaryRow: {
     flexDirection: "row",
-    gap: 14,
-    marginBottom: 30,
+    gap: 12,
+    marginBottom: 32,
   },
 
   summaryCard: {
     flex: 1,
+    minWidth: 0,
     backgroundColor: "#F8FAFC",
-    borderRadius: 15,
-    padding: isWeb ? 18 : 12,
+    borderRadius: 16,
+    padding: isWeb ? 18 : 10,
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "#CBD5E1",
+    borderColor: "#E2E8F0",
   },
 
   summaryIcon: {
-    width: 42,
-    height: 42,
-    borderRadius: 11,
+    width: isWeb ? 42 : 34,
+    height: isWeb ? 42 : 34,
+    borderRadius: 12,
     backgroundColor: "#FFFFFF",
     justifyContent: "center",
     alignItems: "center",
-    marginRight: 10,
+    marginRight: isWeb ? 10 : 8,
     borderWidth: 1,
     borderColor: "#E2E8F0",
   },
 
   summaryNumber: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: isWeb ? 16 : 14,
+    fontWeight: "700",
     color: "#172033",
   },
 
   summaryLabel: {
-    fontSize: 11,
+    fontSize: 10,
     color: "#64748B",
     marginTop: 2,
   },
@@ -141,12 +146,13 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
-    marginBottom: 15,
+    gap: 12,
+    marginBottom: 16,
   },
 
   sectionTitle: {
     fontSize: isWeb ? 24 : 20,
-    fontWeight: "bold",
+    fontWeight: "700",
     color: "#172033",
   },
 
@@ -158,7 +164,7 @@ export const styles = StyleSheet.create({
 
   totalAlat: {
     fontSize: 12,
-    fontWeight: "600",
+    fontWeight: "700",
     color: "#2563EB",
     marginBottom: 2,
   },
@@ -171,34 +177,35 @@ export const styles = StyleSheet.create({
   },
 
   alatItem: {
-    width: isWeb ? "23.5%" : "48%",
+    width: isWeb ? "23%" : "48%",
   },
 
   bottomNav: {
     position: "absolute",
     bottom: 0,
     width: "100%",
-    maxWidth: isWeb ? 1200 : 390,
-    height: 72,
+    maxWidth: isWeb ? 900 : 900,
+    height: 76,
     backgroundColor: "#FFFFFF",
     borderTopWidth: 1,
-    borderTopColor: "#CBD5E1",
+    borderTopColor: "#E2E8F0",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: isWeb ? 500 : 100,
+    gap: isWeb ? 160 : 72,
+    alignSelf: "center",
   },
 
   navItem: {
-    width: 90,
-    height: 55,
+    width: 88,
+    height: 58,
     alignItems: "center",
     justifyContent: "center",
   },
 
   navActive: {
     fontSize: 11,
-    fontWeight: "bold",
+    fontWeight: "700",
     color: "#2563EB",
     marginTop: 3,
   },

@@ -12,17 +12,6 @@ export const daftarAlat: Alat[] = [
       'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=800',
   },
   {
-    id: 4,
-    nama: 'Mesin Molen',
-    kategori: 'Peralatan Beton',
-    hargaSewa: 150000,
-    stok: 2,
-    deskripsi: 'Mesin molen untuk mencampur semen dan material beton.',
-    gambar:
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800',
-  },
- 
-  {
     id: 3,
     nama: 'Tangga Aluminium',
     kategori: 'Peralatan Kerja',
