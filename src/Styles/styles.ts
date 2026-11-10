@@ -5,7 +5,7 @@ const isWeb = Platform.OS === "web";
 export const styles = StyleSheet.create({
   outerContainer: {
     flex: 1,
-    backgroundColor: isWeb ? "#F1F5F9" : "#FFFFFF",
+    backgroundColor: isWeb ? "#eef3f7" : "#ede2e2",
     alignItems: "center",
   },
 
@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     maxWidth: isWeb ? undefined : 390,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#efe9e9",
     alignSelf: "center",
     overflow: "hidden",
   },

@@ -20,6 +20,10 @@ export default function DetailScreen() {
 
   const alat = daftarAlat.find((item) => item.id === Number(id));
 
+  const handleKembali = () => {
+    router.replace("/");
+  };
+
   if (!alat) {
     return (
       <View style={styles.outerContainer}>
@@ -34,7 +38,7 @@ export default function DetailScreen() {
     <View style={styles.outerContainer}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Pressable style={styles.backButton} onPress={() => router.back()}>
+          <Pressable style={styles.backButton} onPress={handleKembali}>
             <Ionicons name="arrow-back" size={23} color="#172033" />
           </Pressable>
 

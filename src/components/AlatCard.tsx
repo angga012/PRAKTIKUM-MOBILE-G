@@ -29,7 +29,7 @@ export default function AlatCard({
 
       {/* Nama */}
       <Text
-        style={styles.nama}
+        style={{color :'red'}}
         numberOfLines={1}
       >
         {alat.nama}

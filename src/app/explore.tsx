@@ -124,7 +124,6 @@ export default function TabTwoScreen() {
     </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,

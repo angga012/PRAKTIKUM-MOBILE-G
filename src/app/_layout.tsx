@@ -6,6 +6,27 @@ export default function RootLayout() {
       screenOptions={{
         headerShown: false,
       }}
-    />
+    >
+      <Stack.Screen
+        name="index"
+        options={{
+          title: 'Beranda',
+        }}
+      />
+
+      <Stack.Screen
+        name="profil"
+        options={{
+          title: 'Profil',
+        }}
+      />
+
+      <Stack.Screen
+        name="detail"
+        options={{
+          title: 'Detail Alat',
+        }}
+      />
+    </Stack>
   );
 }

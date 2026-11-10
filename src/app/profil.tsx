@@ -1,3 +1,4 @@
+
 import {
   View,
   Text,
@@ -14,7 +15,7 @@ const isWeb = Platform.OS === 'web';
 
 export default function ProfilScreen() {
   const handleKembali = () => {
-    router.replace('/');
+    router.back();
   };
 
   return (
@@ -68,7 +69,7 @@ export default function ProfilScreen() {
               </Text>
 
               <Text style={styles.nim}>
-                202410370110103
+                202410370110346
               </Text>
             </View>
 
@@ -93,7 +94,7 @@ export default function ProfilScreen() {
                 </Text>
 
                 <Text style={styles.value}>
-                  202410370110103
+                  202410370110346
                 </Text>
               </View>
 
@@ -332,4 +333,3 @@ const styles = StyleSheet.create({
     marginTop: 3,
   },
 });
-
