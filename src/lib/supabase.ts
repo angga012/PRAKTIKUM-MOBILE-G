@@ -83,19 +83,15 @@ async function setSecureItem(key: string, value: string): Promise<void> {
 
   if (oldChunkCount !== null && oldChunkCount > chunks.length) {
     await Promise.all(
-      Array.from(
-        { length: oldChunkCount - chunks.length },
-        (_, index) =>
-          SecureStore.deleteItemAsync(`${key}.chunk.${chunks.length + index}`),
+      Array.from({ length: oldChunkCount - chunks.length }, (_, index) =>
+        SecureStore.deleteItemAsync(`${key}.chunk.${chunks.length + index}`),
       ),
     );
   }
 }
 
 async function removeSecureItem(key: string): Promise<void> {
-  const chunkCount = getStoredChunkCount(
-    await SecureStore.getItemAsync(key),
-  );
+  const chunkCount = getStoredChunkCount(await SecureStore.getItemAsync(key));
   if (chunkCount !== null) {
     await Promise.all(
       Array.from({ length: chunkCount }, (_, index) =>

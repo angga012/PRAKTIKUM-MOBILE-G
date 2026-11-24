@@ -11,7 +11,7 @@ import {
   View,
 } from "react-native";
 
-import { useAuth } from "@/contexts/AuthContext";
+import { useAuth } from "@/contexts/AuthContexts";
 
 type AuthFormProps = {
   mode: "signIn" | "signUp";
@@ -25,12 +25,18 @@ export default function AuthForm({ mode }: AuthFormProps) {
   const [confirmation, setConfirmation] = useState("");
   const [success, setSuccess] = useState<string | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
-  const isSubmitting = action === mode;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const isBusy = isSubmitting || action !== null;
 
-  async function handleSubmit() {
+  function clearFeedback() {
     clearError();
     setSuccess(null);
     setValidationError(null);
+  }
+
+  async function handleSubmit() {
+    if (isBusy) return;
+    clearFeedback();
 
     const normalizedEmail = email.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail)) {
@@ -46,14 +52,19 @@ export default function AuthForm({ mode }: AuthFormProps) {
       return;
     }
 
-    const result = isSignUp
-      ? await signUp(normalizedEmail, password)
-      : await signIn(normalizedEmail, password);
+    setIsSubmitting(true);
+    try {
+      const result = isSignUp
+        ? await signUp(normalizedEmail, password)
+        : await signIn(normalizedEmail, password);
 
-    if (!result && isSignUp) {
-      setSuccess(
-        "Pendaftaran berhasil. Jika diminta, periksa email untuk konfirmasi akun.",
-      );
+      if (!result && isSignUp) {
+        setSuccess(
+          "Pendaftaran berhasil. Jika diminta, periksa email untuk konfirmasi akun.",
+        );
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -77,10 +88,16 @@ export default function AuthForm({ mode }: AuthFormProps) {
         <TextInput
           autoCapitalize="none"
           autoComplete="email"
+          autoCorrect={false}
+          accessibilityLabel="Email"
           keyboardType="email-address"
-          onChangeText={setEmail}
+          onChangeText={(value) => {
+            setEmail(value);
+            clearFeedback();
+          }}
           placeholder="nama@email.com"
           placeholderTextColor="#94A3B8"
+          returnKeyType="next"
           style={styles.input}
           value={email}
         />
@@ -89,9 +106,17 @@ export default function AuthForm({ mode }: AuthFormProps) {
         <TextInput
           autoCapitalize="none"
           autoComplete={isSignUp ? "new-password" : "current-password"}
-          onChangeText={setPassword}
+          accessibilityLabel="Kata sandi"
+          onChangeText={(value) => {
+            setPassword(value);
+            clearFeedback();
+          }}
+          onSubmitEditing={() => {
+            if (!isSignUp) void handleSubmit();
+          }}
           placeholder="Minimal 6 karakter"
           placeholderTextColor="#94A3B8"
+          returnKeyType={isSignUp ? "next" : "go"}
           secureTextEntry
           style={styles.input}
           value={password}
@@ -102,9 +127,15 @@ export default function AuthForm({ mode }: AuthFormProps) {
             <Text style={styles.label}>Konfirmasi kata sandi</Text>
             <TextInput
               autoCapitalize="none"
-              onChangeText={setConfirmation}
+              accessibilityLabel="Konfirmasi kata sandi"
+              onChangeText={(value) => {
+                setConfirmation(value);
+                clearFeedback();
+              }}
+              onSubmitEditing={() => void handleSubmit()}
               placeholder="Ulangi kata sandi"
               placeholderTextColor="#94A3B8"
+              returnKeyType="go"
               secureTextEntry
               style={styles.input}
               value={confirmation}
@@ -121,14 +152,14 @@ export default function AuthForm({ mode }: AuthFormProps) {
 
         <Pressable
           accessibilityRole="button"
-          disabled={isSubmitting}
+          disabled={isBusy}
           onPress={() => void handleSubmit()}
           style={({ pressed }) => [
             styles.button,
-            (pressed || isSubmitting) && styles.buttonMuted,
+            (pressed || isBusy) && styles.buttonMuted,
           ]}
         >
-          {isSubmitting ? (
+          {isBusy ? (
             <ActivityIndicator color="#FFFFFF" />
           ) : (
             <Text style={styles.buttonText}>

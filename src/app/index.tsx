@@ -3,6 +3,7 @@ import { Image } from "expo-image";
 import { router } from "expo-router";
 import { useEffect, useState } from "react";
 import {
+  ActivityIndicator,
   Platform,
   Pressable,
   ScrollView,
@@ -12,6 +13,7 @@ import {
   useWindowDimensions,
 } from "react-native";
 
+import { useAuth } from "@/contexts/AuthContexts";
 import AlatCard from "../components/AlatCard";
 import { daftarAlat } from "../Data/alat";
 import { getApiTools } from "../Data/api";
@@ -19,10 +21,12 @@ import { styles } from "../Styles/styles";
 import type { ApiTool } from "../Types/api";
 
 export default function HomeScreen() {
+  const { action, error: authError, signOut } = useAuth();
   const { width } = useWindowDimensions();
   const itemWidth =
     width < 700
-      ? (width - (Platform.OS === "web" ? 64 : 32) -
+      ? (width -
+          (Platform.OS === "web" ? 64 : 32) -
           (Platform.OS === "web" ? 18 : 0)) /
         2
       : width < 1050
@@ -83,10 +87,9 @@ export default function HomeScreen() {
     router.push("/profil");
   };
 
-   const handleuser = () => {
-    router.push("/user");
-  };
-    
+  async function handleSignOut() {
+    await signOut();
+  }
 
   return (
     <View style={styles.outerContainer}>
@@ -102,10 +105,25 @@ export default function HomeScreen() {
               <Text style={styles.welcome}>Mau sewa alat apa hari ini?</Text>
             </View>
 
-            <View style={styles.headerIcon}>
-              <Ionicons name="construct-outline" size={25} color="#2563EB" />
-            </View>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Keluar dari akun"
+              disabled={action !== null}
+              onPress={() => void handleSignOut()}
+              style={styles.headerIcon}
+            >
+              {action === "signOut" ? (
+                <ActivityIndicator color="#2563EB" />
+              ) : (
+                <Ionicons name="log-out-outline" size={25} color="#2563EB" />
+              )}
+            </Pressable>
           </View>
+          {authError && (
+            <Text accessibilityRole="alert" style={apiStyles.error}>
+              {authError}
+            </Text>
+          )}
 
           <View style={styles.banner}>
             <View style={styles.bannerText}>
@@ -259,11 +277,6 @@ export default function HomeScreen() {
             <Ionicons name="person-outline" size={25} color="#64748B" />
 
             <Text style={styles.navText}>Profil</Text>
-          </Pressable>
-          <Pressable style={styles.navItem} onPress={handleuser}>
-            <Ionicons name="person-outline" size={25} color="#64748B" />
-
-            <Text style={styles.navText}>user</Text>
           </Pressable>
         </View>
       </View>
