@@ -20,6 +20,12 @@ export default function RootLayout() {
           title: 'Profil',
         }}
       />
+      <Stack.Screen
+        name="user"
+        options={{
+          title: 'User',
+        }}
+      />
 
       <Stack.Screen
         name="detail"

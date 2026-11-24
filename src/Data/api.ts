@@ -1,7 +1,7 @@
 import type {
-  ApiTool,
-  WikipediaToolPage,
-  WikipediaToolResponse,
+    ApiTool,
+    WikipediaToolPage,
+    WikipediaToolResponse,
 } from "../Types/api";
 
 const API_URL =
@@ -75,6 +75,12 @@ export async function fetchApiTools(): Promise<ApiTool[]> {
 
 export function getApiTools(): Promise<ApiTool[]> {
   return new Promise((resolve, reject) => {
-    fetchApiTools().then(resolve).catch(reject);
+    fetchApiTools()
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
 }

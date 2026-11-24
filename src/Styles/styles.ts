@@ -184,7 +184,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     width: "100%",
-    maxWidth: isWeb ? 900 : 900,
+    maxWidth: isWeb ? 1540 : 1540,
     height: 76,
     backgroundColor: "#FFFFFF",
     borderTopWidth: 1,

@@ -83,6 +83,11 @@ export default function HomeScreen() {
     router.push("/profil");
   };
 
+   const handleuser = () => {
+    router.push("/user");
+  };
+    
+
   return (
     <View style={styles.outerContainer}>
       <View style={styles.container}>
@@ -254,6 +259,11 @@ export default function HomeScreen() {
             <Ionicons name="person-outline" size={25} color="#64748B" />
 
             <Text style={styles.navText}>Profil</Text>
+          </Pressable>
+          <Pressable style={styles.navItem} onPress={handleuser}>
+            <Ionicons name="person-outline" size={25} color="#64748B" />
+
+            <Text style={styles.navText}>user</Text>
           </Pressable>
         </View>
       </View>
